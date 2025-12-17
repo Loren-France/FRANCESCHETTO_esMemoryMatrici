@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Esercizio memory con matrici</title>
+    <script src="Script/script.js"></script>
+    <link rel="stylesheet" href="Style/style.css">
 </head>
 <body>
     <h1>Memory con matrici</h1>
     <p>Gioco classico del memory fattoo però con la logica delle matrici</p>
     <br>
+    <label>Inserisci da difficoltà del memory: </label>
+    <select id="difficoltà">
+        <option value="1">Facile</option>
+        <option value="2">Medio</option>
+        <option value="3">Difficile</option>        
+    </select>
+    <br><br>
     <button onclick="start()">Inizia a giocare</button>
-    <br>
+    <br><br>
+    <p id="schema"></p>
+    <br><br>
     <div id="output"></div>
 </body>
 </html>
