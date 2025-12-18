@@ -26,11 +26,12 @@ document.getElementById("output").innerHTML = output;
 function crea(carte,N) {
 let tabella="";
 
-for(let i=0;i<carte.length;i++) {
-    for(let j=0;j<carte[i].length;j++){
-        carte[i][j]=document.createElement("button");
-        tabella.appendChild(carte[i][j]);
+for(let i=0;i<N;i++) {
+    for(let j=0;j<N;j++){
+        tabella+="<button onclick='cliccato()'><img src='Image/memory_back.png' alt='back'></button>";
     }
+    tabella+="<br>";
 }
 
+document.getElementById("tabella").innerHTML = tabella;
 }
