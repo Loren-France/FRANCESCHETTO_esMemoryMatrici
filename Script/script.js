@@ -5,23 +5,20 @@ let output="";
 let N=0;
 
 N= diff=="1" ? 4
-    : diff=="2" ? 5
-    : 6;
+    : diff=="2" ? 6
+    : 8;
 
     if(N==4) {
         carte=[[],[],[],[]];
     }
-    else if(N==5) {
-        carte=[[],[],[],[],[]];
+    else if(N==6) {
+        carte=[[],[],[],[],[],[]];
     }
     else{
-        carte=[[],[],[],[],[],[]];
+        carte=[[],[],[],[],[],[],[],[]];
     }
 
     crea(carte,N);
-
-
-
 
 document.getElementById("output").innerHTML = output;
 }
@@ -36,5 +33,4 @@ for(let i=0;i<carte.length;i++) {
     }
 }
 
-document.getElementById("schema").innerHTML = tabella;
 }
