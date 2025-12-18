@@ -24,12 +24,18 @@ document.getElementById("output").innerHTML = output;
 }
 
 function crea(carte,N) {
+    let tabella="";
 
-for(let i=0;i<N;i++) {
+    tabella+="<tbody>";
+    for(let i=0;i<N;i++) {
+    tabella+="<tr>";
     for(let j=0;j<N;j++){
-        carte[i][j]="<button onclick='cliccato()'><img src='Image/memory_back.png' alt='back'></button>";
+        carte[i][j]="<button onclick='cliccato()' id='carte'><img src='Image/memory_back.png' alt='back'></button>";
+        tabella+="<td>"+carte[i][j]+"</td>";
     }
+    tabella+="</tr>";
 }
+    tabella+="</tbody>";
 
-document.getElementById("schema").innerHTML = carte;
+document.getElementById("schema").innerHTML = tabella;
 }

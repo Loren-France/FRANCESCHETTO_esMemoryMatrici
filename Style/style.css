@@ -1,12 +1,12 @@
 body{
     background-color: burlywood;
 }
-button{
-    height: 110px;
-    width: 110px;
+#carte{
+    height: 130px;
+    width: 130px;
     size: auto;
 }
 img{
-    height: 100px;
-    width: 100px;
+    height: 125px;
+    width: 120px;
 }
