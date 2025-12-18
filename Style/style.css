@@ -1,10 +1,14 @@
 body{
     background-color: burlywood;
 }
-#carte{
+button,select{
+    cursor: pointer;
+}
+.carte{
     height: 130px;
     width: 130px;
     size: auto;
+    cursor: pointer;
 }
 img{
     height: 125px;
