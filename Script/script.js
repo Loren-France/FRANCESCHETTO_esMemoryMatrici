@@ -21,11 +21,11 @@ let immaginiDisponibili = [
     "Image/18coppia.png"
 ];
 let older;
+let output="";
 
 function start() {
 let diff=document.getElementById("difficoltà").value;
 let carte;
-let output="";
 let N=0;
 
 N= diff=="1" ? 4
@@ -51,11 +51,18 @@ function crea(carte,N) {
     let tabella="";
     let c=1;
 
+let immagini = [];
+    for (let i = 0; i < (N*N)/2; i++) {
+        immagini.push(immaginiDisponibili[i]);
+        immagini.push(immaginiDisponibili[i]); 
+    }
+    immagini = shuffle(immagini);
+
     tabella+="<tbody>";
     for(let i=0;i<N;i++) {
     tabella+="<tr>";
     for(let j=0;j<N;j++){
-        carte[i][j] = "<button onclick='cliccato(" + c + ")' class='carte' id='carta" + c + "'><img src='Image/memory_back.png' alt='back'></button>";
+        carte[i][j] = "<button onclick='cliccato(" + c +","+ N + ")' class='carte' id='carta" + c + "'><img src='Image/memory_back.png' alt='back'></button>";
         tabella+="<td>"+carte[i][j]+"</td>";
         c++;
     }
@@ -66,29 +73,35 @@ function crea(carte,N) {
 document.getElementById("schema").innerHTML = tabella;
 }
 
-function cliccato(c) {
+function cliccato(c,N) {
+let randomCard1=Math.floor(Math.random()*(N*N))+1;
+let randomCard2=Math.floor(Math.random()*(N*N))+1;
 
     if(prima){
         document.getElementById("carta"+c).disabled = true;
-        document.getElementById("carta"+c).innerHTML = "<img src='Image/1coppia.png' alt='coppia'>";
+        document.getElementById("carta"+c).innerHTML = "<img src='"+immagini+"' alt='coppia'>";
         older="carta"+c;
         seconda=true;
         prima=false;
     }else if(seconda){
-        document.getElementById("carta"+c).innerHTML = "<img src='Image/2coppia.png' alt='coppia'>";
-        for(let i=1;i<=16;i++){
+        document.getElementById("carta"+c).innerHTML = "<img src='Image/"+randomCard2+"coppia.png' alt='coppia'>";
+        if(randomCard1==randomCard2){
+            output+="Hai trovato una coppia!";
+        } else{
+            output+="Non è una coppia, riprova!";
+        for(let i=1;i<=N*N;i++){
             document.getElementById("carta"+i).disabled = true;
         }
         setTimeout( () => {
             document.getElementById("carta"+c).innerHTML = "<img src='Image/memory_back.png' alt='back'>";
             document.getElementById(older).innerHTML = "<img src='Image/memory_back.png' alt='back'>";
-            for(let i=1;i<=16;i++){
+            for(let i=1;i<=N*N;i++){
                 document.getElementById("carta"+i).disabled = false;
             }
         }, 2000);
+        }
         prima=true;
         seconda=false;
     }else{}
-
-
+document.getElementById("output").innerHTML = output;
 }
